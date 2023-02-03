@@ -5,7 +5,7 @@ import { Color } from "../configs/Color";
 
 function Services() {
   return (
-    <section className="container mx-auto px-6 py-8">
+    <section className="container mx-auto px-6 py-10">
       <div className="flex items-center justify-between">
         {serviceData.map((item, index) => (
           <motion.div
