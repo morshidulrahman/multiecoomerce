@@ -12,7 +12,7 @@ function Hero() {
         <div className="flex flex-wrap gap-8 items-center">
           <div className="w-[90%] md:w-1/2">
             <p className="text-[#111] text-sm">Trending Product in {year}</p>
-            <h1 className="text-xl font-bold py-2 w-[70%] capitalize">
+            <h1 className="text-xl font-bold py-2 md:w-[70%] capitalize w-full">
               Make your interior more minimalistic & modern
             </h1>
             <p className="mb-5 mt-1 text-sm text-gray-700">
@@ -27,8 +27,8 @@ function Hero() {
               <Link to="shop">shop now</Link>
             </motion.button>
           </div>
-          <div className="md:w-2/5 w-10/12">
-            <img src={heroimg} alt="heroimg" />
+          <div className="md:w-2/5 w-10/12 sm:w-1/2">
+            <img src={heroimg} alt="heroimg" className="w-full" />
           </div>
         </div>
       </div>

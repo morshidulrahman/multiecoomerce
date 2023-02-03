@@ -13,7 +13,7 @@ function Footer() {
     <div className={`bg-[${Color.primarycolor}]`}>
       <div className="container mx-auto px-6 pt-10">
         <div className="flex gap-6 justify-between flex-wrap">
-          <div className="w-2/5">
+          <div className="md:w-2/5 w-11/12">
             <h3 className="text-white capitalize font-semibold mb-2">
               multimart
             </h3>
@@ -83,7 +83,7 @@ function Footer() {
             </ul>
           </div>
         </div>
-        <div className="border-t border-t-white/10 my-3">
+        <div className="border-t border-t-white/10 mt-3">
           <p className="text-white/40 text-center text-xs mt-2 pb-2">
             Copyright {year} developed by Morshidul Rahman . All rights reserved
           </p>

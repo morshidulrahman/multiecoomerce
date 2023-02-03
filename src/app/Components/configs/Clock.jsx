@@ -30,32 +30,32 @@ function Clock() {
 
   console.log(days, hours);
   return (
-    <div className="flex space-x-4 items-center text-white/90 font-semibold mt-4 mb-7">
-      <div className="flex items-center space-x-6">
+    <div className="flex gap-4 items-center text-white/90 font-semibold mt-4 mb-7">
+      <div className="flex items-center md:space-x-6 space-x-2">
         <div className="flex items-center flex-col justify-center">
           <p className="">{days}</p>
-          <p className="text-sm">Days</p>
+          <p className="md:text-sm text-xs">Days</p>
         </div>
         <span className="text-xl">:</span>
       </div>
-      <div className="flex items-center space-x-6">
+      <div className="flex items-center md:space-x-6 space-x-2">
         <div className="flex items-center flex-col justify-center">
           <p className="">{hours}</p>
-          <p className="text-sm">Hours</p>
+          <p className="md:text-sm text-xs">Hours</p>
         </div>
         <span className="text-xl">:</span>
       </div>
-      <div className="flex items-center space-x-6">
+      <div className="flex items-center md:space-x-6 space-x-2">
         <div className="flex items-center flex-col justify-center">
           <p className="">{minutes}</p>
-          <p className="text-sm">Minutes</p>
+          <p className="md:text-sm text-xs">Minutes</p>
         </div>
         <span className="text-xl">:</span>
       </div>
-      <div className="flex items-center space-x-6">
+      <div className="flex items-center md:space-x-6 space-x-2">
         <div className="flex items-center flex-col justify-center">
           <p className="">{seconds}</p>
-          <p className="text-sm">Seconds</p>
+          <p className="md:text-sm text-xs">Seconds</p>
         </div>
       </div>
     </div>
