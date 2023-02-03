@@ -10,11 +10,26 @@ import Clock from "../Components/configs/Clock";
 function Home() {
   const [data, setdata] = useState([]);
   const [bestseller, setbestseller] = useState([]);
+  const [mobileproduct, setmobileproduct] = useState([]);
+  const [wirelessproduct, setwirelessproduct] = useState([]);
+  const [watchproduct, setwatchproduct] = useState([]);
+
   useEffect(() => {
     const filterproducts = products.filter((item) => item.category === "chair");
     const filetbestseller = products.filter((item) => item.category === "sofa");
+    const mobilefilterproducts = products.filter(
+      (item) => item.category === "mobile"
+    );
+    const wirelessfilterproducts = products.filter(
+      (item) => item.category === "wireless"
+    );
+    const watchproduct = products.filter((item) => item.category === "watch");
+
     setdata(filterproducts);
     setbestseller(filetbestseller);
+    setmobileproduct(mobilefilterproducts);
+    setwirelessproduct(wirelessfilterproducts);
+    setwatchproduct(watchproduct);
   }, []);
 
   return (
@@ -59,6 +74,23 @@ function Home() {
             <img src={timerimage} alt="img" className="w-[30%]" />
           </div>
         </div>
+      </section>
+      <section className="container mx-auto px-6 py-10">
+        <h2
+          className={`text-[${Color.primarycolor}] font-bold text-center text-xl capitalize`}
+        >
+          New Arrivals
+        </h2>
+        <ProductList data={mobileproduct} />
+        <ProductList data={wirelessproduct} />
+      </section>
+      <section className="container mx-auto px-6 py-10">
+        <h2
+          className={`text-[${Color.primarycolor}] font-bold text-center text-xl capitalize`}
+        >
+          popular in category
+        </h2>
+        <ProductList data={watchproduct} />
       </section>
     </>
   );

@@ -3,7 +3,7 @@ import ProductCard from "./ProductCard";
 
 function ProductList({ data }) {
   return (
-    <div className="flex justify-between items-center gap-6 mt-16 flex-wrap ">
+    <div className="flex items-center gap-6 mt-16 flex-wrap justify-center md:justify-start">
       {data.map((item, index) => (
         <ProductCard item={item} key={index} />
       ))}

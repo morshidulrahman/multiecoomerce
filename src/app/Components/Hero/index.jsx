@@ -7,10 +7,10 @@ import { Color } from "../configs/Color";
 function Hero() {
   const year = new Date().getFullYear();
   return (
-    <div className="bg-[#d6e5fb] py-5">
+    <div className="bg-[#d6e5fb] py-5 max-w-full md:w-full">
       <div className="container mx-auto px-6">
         <div className="flex flex-wrap gap-8 items-center">
-          <div className="md:w-1/2">
+          <div className="w-[90%] md:w-1/2">
             <p className="text-[#111] text-sm">Trending Product in {year}</p>
             <h1 className="text-xl font-bold py-2 w-[70%] capitalize">
               Make your interior more minimalistic & modern
@@ -27,7 +27,7 @@ function Hero() {
               <Link to="shop">shop now</Link>
             </motion.button>
           </div>
-          <div className="md:w-2/5">
+          <div className="md:w-2/5 w-10/12">
             <img src={heroimg} alt="heroimg" />
           </div>
         </div>

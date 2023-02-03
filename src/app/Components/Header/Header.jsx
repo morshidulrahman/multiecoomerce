@@ -22,21 +22,30 @@ const Navlink = [
   },
 ];
 function Header() {
-  const[active,setactive]=useState("")
+  const [active, setactive] = useState("");
   return (
-    <div className='container mx-auto px-6'>
+    <div className="container mx-auto px-6">
       <div className="flex justify-between items-center py-5">
-        <div className="flex space-x-2"> 
-         <img src={logo} alt="logo" className="w-5 h-5" />
+        <div className="flex space-x-2">
+          <img src={logo} alt="logo" className="w-5 h-5" />
           <p className={`text-[${Color.primarycolor}] font-semibold`}>
             <Link to="home">Multimart</Link>
           </p>
         </div>
         <div>
-          <ul className="flex items-center space-x-8">
+          <ul className="md:flex items-center space-x-8 hidden">
             {Navlink.map((item, index) => (
-              <li key={index} className={`capitalize `} onClick={()=>setactive(index)}>
-                <Link to={item.path} className={`capitalize [${active ? "text-semibold":""}]`}>{item.title}</Link>
+              <li
+                key={index}
+                className={`capitalize `}
+                onClick={() => setactive(index)}
+              >
+                <Link
+                  to={item.path}
+                  className={`capitalize [${active ? "text-semibold" : ""}]`}
+                >
+                  {item.title}
+                </Link>
               </li>
             ))}
           </ul>
@@ -59,7 +68,7 @@ function Header() {
             </p>
           </div>
           <motion.img
-          whileTap={{scale:1.2}}
+            whileTap={{ scale: 1.2 }}
             src={userlogo}
             alt="user-logo"
             className="w-6 h-6 rounded-full"
