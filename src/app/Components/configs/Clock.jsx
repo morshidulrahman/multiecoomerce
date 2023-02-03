@@ -1,0 +1,65 @@
+import React, { useEffect, useState } from "react";
+
+function Clock() {
+  const [days, setdays] = useState();
+  const [hours, sethours] = useState();
+  const [minutes, setminutes] = useState();
+  const [seconds, setseconds] = useState();
+
+  let destination = new Date("Mar 20, 2023 ").getTime();
+  let interval = setInterval(() => {
+    let now = new Date().getTime();
+
+    const distance = destination - now;
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const hours = Math.floor(
+      (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+    );
+    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+    if (destination < 0) {
+      clearInterval(interval);
+    } else {
+      setdays(days);
+      sethours(hours);
+      setminutes(minutes);
+      setseconds(seconds);
+    }
+  }, 1000);
+
+  console.log(days, hours);
+  return (
+    <div className="flex space-x-4 items-center text-white/90 font-semibold mt-4 mb-7">
+      <div className="flex items-center space-x-6">
+        <div className="flex items-center flex-col justify-center">
+          <p className="">{days}</p>
+          <p className="text-sm">Days</p>
+        </div>
+        <span className="text-xl">:</span>
+      </div>
+      <div className="flex items-center space-x-6">
+        <div className="flex items-center flex-col justify-center">
+          <p className="">{hours}</p>
+          <p className="text-sm">Hours</p>
+        </div>
+        <span className="text-xl">:</span>
+      </div>
+      <div className="flex items-center space-x-6">
+        <div className="flex items-center flex-col justify-center">
+          <p className="">{minutes}</p>
+          <p className="text-sm">Minutes</p>
+        </div>
+        <span className="text-xl">:</span>
+      </div>
+      <div className="flex items-center space-x-6">
+        <div className="flex items-center flex-col justify-center">
+          <p className="">{seconds}</p>
+          <p className="text-sm">Seconds</p>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export default Clock;
