@@ -54,8 +54,8 @@ function Home() {
       </section>
       <section className={`bg-[${Color.primarycolor}]`}>
         <div className="container mx-auto px-6 py-10 ">
-          <div className="flex md:gap-4 flex-wrap items-center justify-between gap-8">
-            <div>
+          <div className="flex md:gap-4 flex-wrap items-center sm:justify-between gap-8 justify-center">
+            <div className="text-center sm:text-start">
               <p className="text-white/90 font-semibold capitalize text-sm leading-6">
                 Limited offers
               </p>
@@ -71,7 +71,11 @@ function Home() {
                 <Link to="/shop">visit store</Link>
               </button>
             </div>
-            <img src={timerimage} alt="img" className="md:w-[30%] w-[80%]" />
+            <img
+              src={timerimage}
+              alt="img"
+              className="w-[30%] hidden sm:flex "
+            />
           </div>
         </div>
       </section>

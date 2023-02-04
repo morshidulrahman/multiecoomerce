@@ -7,7 +7,7 @@ import { Color } from "../configs/Color";
 function Hero() {
   const year = new Date().getFullYear();
   return (
-    <div className="bg-[#d6e5fb] py-5 max-w-full md:w-full">
+    <div className="bg-[#d6e5fb] py-5 max-w-full md:w-full ">
       <div className="container mx-auto px-6">
         <div className="flex flex-wrap gap-8 items-center">
           <div className="w-[90%] md:w-1/2">

@@ -28,7 +28,6 @@ function Clock() {
     }
   }, 1000);
 
-  console.log(days, hours);
   return (
     <div className="flex gap-4 items-center text-white/90 font-semibold mt-4 mb-7">
       <div className="flex items-center md:space-x-6 space-x-2">
