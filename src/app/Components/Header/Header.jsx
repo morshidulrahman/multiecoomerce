@@ -26,23 +26,23 @@ function Header() {
   const [active, setactive] = useState("");
   const [toggle, settoggle] = useState(false);
   const headerref = useRef(null);
-  const sticyheader = () => {
-    window.addEventListener("scroll", () => {
-      if (
-        document.body.scrollTo > 80 ||
-        document.documentElement.scrollTo > 80
-      ) {
-        headerref.current.classList.add("sticky_header");
-      } else {
-        headerref.current.classList.remove("sticky_header");
-      }
-    });
-  };
+  // const sticyheader = () => {
+  //   window.addEventListener("scroll", () => {
+  //     if (
+  //       document.body.scrollTo > 80 ||
+  //       document.documentElement.scrollTo > 80
+  //     ) {
+  //       headerref.current.classList.add("sticky_header");
+  //     } else {
+  //       headerref.current.classList.remove("sticky_header");
+  //     }
+  //   });
+  // };
 
-  useEffect(() => {
-    sticyheader();
-    return () => window.removeEventListener("scroll", sticyheader);
-  });
+  // useEffect(() => {
+  //   sticyheader();
+  //   return () => window.removeEventListener("scroll", sticyheader);
+  // });
 
   return (
     <header className="">

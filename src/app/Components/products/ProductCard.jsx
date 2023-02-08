@@ -3,7 +3,22 @@ import { motion } from "framer-motion";
 import { BsCartPlus } from "react-icons/bs";
 import { Link } from "react-router-dom";
 import { Color } from "../configs/Color";
+import { useDispatch } from "react-redux";
+import { addItem } from "../../Redux/slices/cartSlice";
+
 function ProductCard({ item }) {
+  const dispatch = useDispatch();
+  const addtoCart = () => {
+    dispatch(
+      addItem({
+        id: item.id,
+        productName: item.productName,
+        price: item.price,
+        image: item.imgUrl,
+      })
+    );
+    alert("cart add success");
+  };
   return (
     <div className="border rounded-md px-2 py-3 cursor-pointer hover:-translate-y-2 shadow-md duration-500">
       <img src={item.imgUrl} alt="chair" className="w-48 h-48" />
@@ -17,6 +32,7 @@ function ProductCard({ item }) {
       <div className="flex justify-between items-center">
         <p className="text-xs">$ {item.price}</p>
         <motion.span
+          onClick={addtoCart}
           className={`bg-[${Color.primarycolor}] p-2 flex items-center text-white rounded-full mr-2 justify-end`}
           whileTap={{ scale: 1.2 }}
         >
