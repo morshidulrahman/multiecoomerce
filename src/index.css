@@ -21,3 +21,15 @@ body {
   z-index: 99999;
   background-color:'#fdefe6';
 }
+
+.product-bg{
+  background-image: linear-gradient(rgba(0, 0, 0, 0.439),rgba(0, 0, 0, 0.382)),url(
+    ../src/app/assets/images/bg.jpg
+  );
+  padding:100px 0px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

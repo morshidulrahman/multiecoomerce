@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { Color } from "../configs/Color";
 import { useDispatch } from "react-redux";
 import { addItem } from "../../Redux/slices/cartSlice";
-
+import { toast } from "react-toastify";
 function ProductCard({ item }) {
   const dispatch = useDispatch();
   const addtoCart = () => {
@@ -17,7 +17,7 @@ function ProductCard({ item }) {
         image: item.imgUrl,
       })
     );
-    alert("cart add success");
+    toast("cart added successfully");
   };
   return (
     <div className="border rounded-md px-2 py-3 cursor-pointer hover:-translate-y-2 shadow-md duration-500">

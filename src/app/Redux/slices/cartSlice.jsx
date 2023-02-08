@@ -11,7 +11,7 @@ export const cartSlice = createSlice({
   initialState,
   reducers: {
     addItem: (state, action) => {
-      const newitem = [action.payload, ...state.cartItems];
+      const newitem = action.payload;
       const exitingItems = state.cartItems.find(
         (item) => item.id === newitem.id
       );
