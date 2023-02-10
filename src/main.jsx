@@ -13,7 +13,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
     <BrowserRouter>
       <Provider store={store}>
         <ToastContainer
-          theme="light"
+          theme="dark"
           position="top-right"
           autoClose={2000}
           closeOnClick

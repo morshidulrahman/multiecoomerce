@@ -17,7 +17,7 @@ function ProductCard({ item }) {
         image: item.imgUrl,
       })
     );
-    toast("cart added successfully");
+    toast.success("cart added successfully");
   };
   return (
     <div className="border rounded-md px-2 py-3 cursor-pointer hover:-translate-y-2 shadow-md duration-500">
