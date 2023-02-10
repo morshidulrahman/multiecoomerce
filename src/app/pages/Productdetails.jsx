@@ -35,15 +35,12 @@ function Productdetails() {
 
   const submitHandler = (e) => {
     e.preventDefault();
-    const reviewuserName = reviewuser.current.value;
-    const reviewMessage = reviewMsg.current.value;
 
     const reviewobj = {
-      auhor: reviewuserName,
-      message: reviewMessage,
+      auhor: name,
+      message: textarea,
       rating,
     };
-    console.log(reviewobj);
 
     toast.success("review successfully");
   };
@@ -64,7 +61,7 @@ function Productdetails() {
     <div>
       <CommonTitle title={productName} />
       <div className="grid grid-cols-2 gap-4 container px-6 mx-auto">
-        <div className="col-span-1">
+        <div className="col-span-2 md:col-span-1">
           <img
             src={imgUrl}
             alt={productName}
@@ -72,7 +69,7 @@ function Productdetails() {
             className="w-[90%] h-[90%]"
           />
         </div>
-        <div className="col-span-1">
+        <div className="col-span-2 md:col-span-1">
           <div className="mt-10">
             <h2 className="font-semibold text-lg">{productName}</h2>
             <div className="flex space-x-2 items-center py-1">
@@ -100,7 +97,7 @@ function Productdetails() {
             <motion.button
               onClick={addtoCart}
               whileTap={{ scale: 1.2 }}
-              className={`bg-[${Color.primarycolor}] text-white px-4 py-2 cursor-pointer capitalize text-sm rounded-sm my-5`}
+              className={`bg-[${Color.primarycolor}] text-white px-4 py-2 cursor-pointer capitalize md:text-sm rounded-sm my-5 text-xs`}
             >
               add to cart
             </motion.button>
@@ -149,11 +146,13 @@ function Productdetails() {
                 ))}
               </ul>
               <div className="w-[80%] mx-auto">
-                <h3 className="font-semibold mb-2">Leave your experience</h3>
+                <h3 className="font-semibold mb-2 mt-4">
+                  Leave your experience
+                </h3>
                 <form action="" onSubmit={submitHandler}>
                   <div>
                     <input
-                      ref={reviewuser}
+                      onChange={(e) => setname(e.target.value)}
                       type="text"
                       placeholder="enter your name"
                       className={`border border-gray-300 rounded px-2 py-2 text-xs w-[70%] outline-none`}
@@ -198,7 +197,7 @@ function Productdetails() {
                   </div>
                   <div className="py-3 ">
                     <textarea
-                      ref={reviewMsg}
+                      onChange={(e) => settextarea(e.target.value)}
                       type="text"
                       placeholder="review message"
                       className={`border border-gray-300 rounded px-2 py-2 text-xs w-[70%] outline-none`}
