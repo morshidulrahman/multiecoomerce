@@ -1,12 +1,15 @@
 import React, { useState, useRef, useEffect } from "react";
 import logo from "../../assets/images/eco-logo.png";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Color } from "../configs/Color";
 import { AiOutlineHeart, AiOutlineMenu } from "react-icons/ai";
 import { GrFormClose } from "react-icons/gr";
 import { BsBagDash } from "react-icons/bs";
 import userlogo from "../../assets/images/user-icon.png";
 import { motion } from "framer-motion";
+
+import { useSelector } from "react-redux";
+import { TotalQuantity } from "../../Redux/slices/cartSlice";
 
 const Navlink = [
   {
@@ -26,6 +29,11 @@ function Header() {
   const [active, setactive] = useState("");
   const [toggle, settoggle] = useState(false);
   const headerref = useRef(null);
+  const navigation = useNavigate();
+  const totalammount = useSelector(TotalQuantity);
+  const navigatelink = () => {
+    navigation("/cart");
+  };
   // const sticyheader = () => {
   //   window.addEventListener("scroll", () => {
   //     if (
@@ -93,12 +101,12 @@ function Header() {
                 1
               </p>
             </div>
-            <div className="relative">
+            <div className="relative" onClick={navigatelink}>
               <BsBagDash size={20} />
               <p
                 className={`bg-[#0a1d37] text-white  rounded-full text-[8px] w-3 h-3 flex items-center justify-center absolute top-0 -right-0`}
               >
-                1
+                {totalammount}
               </p>
             </div>
             <motion.img

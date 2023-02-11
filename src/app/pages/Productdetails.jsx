@@ -49,7 +49,7 @@ function Productdetails() {
     dispatch(
       addItem({
         id,
-        image: imgUrl,
+        imgUrl: imgUrl,
         productName,
         price,
       })
