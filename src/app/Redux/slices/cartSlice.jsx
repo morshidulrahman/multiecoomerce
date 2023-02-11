@@ -32,7 +32,8 @@ export const cartSlice = createSlice({
           Number(exitingItems.totalPrice) + Number(newitem.price);
       }
       state.totalAmount = state.cartItems.reduce(
-        (total, item) => total + Number(item.price) * Number(item.quantity)
+        (total, item) => total + Number(item.price) * Number(item.quantity),
+        0
       );
     },
     deletItems: (state, action) => {
@@ -42,9 +43,10 @@ export const cartSlice = createSlice({
         state.cartItems = state.cartItems.filter((item) => item.id !== id);
         state.totalQuantity = state.totalQuantity - existingItems.quantity;
       }
-      // state.totalAmount = state.cartItems.reduce(
-      //   (total, item) => total + Number(item.price) * Number(item.quantity)
-      // );
+      state.totalAmount = state.cartItems.reduce(
+        (total, item) => total + Number(item.price) * Number(item.quantity),
+        0
+      );
     },
   },
 });
