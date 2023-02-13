@@ -109,12 +109,14 @@ function Header() {
                 {totalammount}
               </p>
             </div>
-            <motion.img
-              whileTap={{ scale: 1.2 }}
-              src={userlogo}
-              alt="user-logo"
-              className="w-6 h-6 rounded-full"
-            />
+            <Link to="/login">
+              <motion.img
+                whileTap={{ scale: 1.2 }}
+                src={userlogo}
+                alt="user-logo"
+                className="w-6 h-6 rounded-full"
+              />
+            </Link>
             <span className=" md:hidden block" onClick={() => settoggle(true)}>
               <AiOutlineMenu size={22} color="#0a1d37" />
             </span>

@@ -50,18 +50,22 @@ function Cart() {
                     taxes and shipping will calculate in checkout
                   </p>
                   <div>
-                    <motion.button
-                      whileTap={{ scale: 1.2 }}
-                      className={`bg-[${Color.primarycolor}] text-white rounded-md px-4 py-2 w-full mb-4 text-sm capitalize`}
-                    >
-                      <Link to="/checkout">checkout</Link>
-                    </motion.button>
-                    <motion.button
-                      whileTap={{ scale: 1.2 }}
-                      className={`bg-[${Color.primarycolor}] text-white rounded-md px-4 py-2 w-full text-sm capitalize`}
-                    >
-                      <Link to="/shop">continue shopping</Link>
-                    </motion.button>
+                    <Link to="/checkout">
+                      <motion.button
+                        whileTap={{ scale: 1.2 }}
+                        className={`bg-[${Color.primarycolor}] text-white rounded-md px-4 py-2 w-full mb-4 text-sm capitalize`}
+                      >
+                        checkout
+                      </motion.button>
+                    </Link>
+                    <Link to="/shop">
+                      <motion.button
+                        whileTap={{ scale: 1.2 }}
+                        className={`bg-[${Color.primarycolor}] text-white rounded-md px-4 py-2 w-full text-sm capitalize`}
+                      >
+                        continue shopping
+                      </motion.button>
+                    </Link>
                   </div>
                 </div>
               </div>
