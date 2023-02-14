@@ -7,9 +7,12 @@ import { GrFormClose } from "react-icons/gr";
 import { BsBagDash } from "react-icons/bs";
 import userlogo from "../../assets/images/user-icon.png";
 import { motion } from "framer-motion";
-
+import Auth from "../Hook/Auth";
 import { useSelector } from "react-redux";
 import { TotalQuantity } from "../../Redux/slices/cartSlice";
+import { signOut } from "firebase/auth";
+import { auth } from "../../../../firebaseconfig";
+import { toast } from "react-toastify";
 
 const Navlink = [
   {
@@ -31,29 +34,27 @@ function Header() {
   const headerref = useRef(null);
   const navigation = useNavigate();
   const totalammount = useSelector(TotalQuantity);
+  const { currentuser } = Auth();
+  const [Toggle, setToggle] = useState(false);
+
   const navigatelink = () => {
     navigation("/cart");
   };
-  // const sticyheader = () => {
-  //   window.addEventListener("scroll", () => {
-  //     if (
-  //       document.body.scrollTo > 80 ||
-  //       document.documentElement.scrollTo > 80
-  //     ) {
-  //       headerref.current.classList.add("sticky_header");
-  //     } else {
-  //       headerref.current.classList.remove("sticky_header");
-  //     }
-  //   });
-  // };
 
-  // useEffect(() => {
-  //   sticyheader();
-  //   return () => window.removeEventListener("scroll", sticyheader);
-  // });
+  const logout = () => {
+    signOut(auth)
+      .then(() => {
+        setToggle(false);
+        toast.success("logout successfully");
+        navigation("/home");
+      })
+      .catch((err) => {
+        toast.error(err.message);
+      });
+  };
 
   return (
-    <header className="">
+    <header className="border-b border-b-gray-200">
       <div className="container mx-auto px-6">
         <div className="flex justify-between items-center py-5">
           <div className="flex space-x-2">
@@ -109,14 +110,38 @@ function Header() {
                 {totalammount}
               </p>
             </div>
-            <Link to="/login">
+            <div className="relative">
               <motion.img
+                onClick={() => setToggle(!Toggle)}
                 whileTap={{ scale: 1.2 }}
-                src={userlogo}
+                src={!currentuser ? userlogo : currentuser.photoURL}
                 alt="user-logo"
-                className="w-6 h-6 rounded-full"
+                className="w-6 h-6 rounded-full object-cover"
+                loading="lazy"
               />
-            </Link>
+              {Toggle ? (
+                <div className="bg-[#fdefe6] px-4 py-2 rounded-sm absolute top-11 text-sm font-semibold">
+                  {currentuser ? (
+                    <motion.span onClick={logout} whileTap={{ scale: 1.2 }}>
+                      Logout
+                    </motion.span>
+                  ) : (
+                    <div className="flex flex-col gap-1 text-sm">
+                      <Link to="/signup">
+                        {" "}
+                        <span onClick={() => setToggle(false)}>Signup</span>
+                      </Link>
+                      <Link to="/login">
+                        {" "}
+                        <span onClick={() => setToggle(false)}>Login</span>
+                      </Link>
+                    </div>
+                  )}
+                </div>
+              ) : (
+                ""
+              )}
+            </div>
             <span className=" md:hidden block" onClick={() => settoggle(true)}>
               <AiOutlineMenu size={22} color="#0a1d37" />
             </span>

@@ -9,6 +9,7 @@ import {
   Productdetails,
   Signup,
 } from "../app/pages/index";
+import ProtectedRoute from "./ProtectedRoute";
 
 function Routers() {
   return (
