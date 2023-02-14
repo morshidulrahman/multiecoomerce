@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { Color } from "../Components/configs/Color";
 function Login() {
-  const [password, setpassweord] = useState("");
+  const [password, setpassword] = useState("");
   const [email, setmail] = useState("");
   return (
     <div className="container px-6 mx-auto">
@@ -14,13 +14,17 @@ function Login() {
           className={`bg-[${Color.primarycolor}] px-6 pt-8 pb-5 rounded-md w-[40%] flex items-center justify-center flex-col`}
         >
           <input
-            type="text"
-            placeholder="Enter your name"
+            type="email"
+            value={email}
+            onChange={(e) => setmail(e.target.value)}
+            placeholder="Enter your email"
             className="px-3 py-2 rounded-md border border-gray-300 outline-none mb-4 w-full text-sm"
           />
           <input
-            type="email"
-            placeholder="Enter your email"
+            type="password"
+            value={password}
+            onChange={(e) => setpassword(e.target.value)}
+            placeholder="Enter your password"
             className="px-3 py-2 rounded-md border border-gray-300 outline-none mb-4 w-full text-sm"
           />
           <button
@@ -30,7 +34,7 @@ function Login() {
           </button>
           <p className="text-xs text-gray-400 mt-3">
             Don't have an account?{" "}
-            <Link to="/signup" className="text-gray-300">
+            <Link to="/signup" className="text-gray-300 font-medium">
               Create an account
             </Link>
           </p>
