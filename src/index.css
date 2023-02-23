@@ -33,3 +33,10 @@ body {
   align-items: center;
   justify-content: center;
 }
+ 
+.product-input{
+  @apply w-full border outline-none py-1 rounded px-2 text-sm border-gray-300
+}
+.product-title{
+  @apply font-medium text-orange-500 text-sm
+}

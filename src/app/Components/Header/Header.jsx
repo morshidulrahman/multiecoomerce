@@ -128,12 +128,13 @@ function Header() {
                   ) : (
                     <div className="flex flex-col gap-1 text-sm">
                       <Link to="/signup">
-                        {" "}
                         <span onClick={() => setToggle(false)}>Signup</span>
                       </Link>
                       <Link to="/login">
-                        {" "}
                         <span onClick={() => setToggle(false)}>Login</span>
+                      </Link>
+                      <Link to="/dashboard">
+                        <span onClick={() => setToggle(false)}>Dashboard</span>
                       </Link>
                     </div>
                   )}
