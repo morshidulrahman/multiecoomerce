@@ -15,21 +15,13 @@ function Login() {
     setloading(true);
 
     try {
-      const usercreadantional = await signInWithEmailAndPassword(
-        auth,
-        email,
-        password
-      );
-      const user = usercreadantional.user;
-
-      console.log(user);
-
+      await signInWithEmailAndPassword(auth, email, password);
       setloading(false);
       toast.success("login successfully");
       navigate("/checkout");
     } catch (error) {
       setloading(false);
-      toast.error(error.message);
+      toast.error("username and password are incorrect");
     }
   };
   return (

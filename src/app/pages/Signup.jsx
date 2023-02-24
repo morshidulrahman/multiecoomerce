@@ -32,6 +32,12 @@ function Signup() {
       console.log(uploadTask);
 
       uploadTask.on(
+        "state_changed",
+        (snapshot) => {
+          const progress =
+            (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+          console.log(`Upload is ${progress}% done`);
+        },
         (error) => {
           toast.error(error.message);
         },

@@ -2,8 +2,9 @@ import React, { useState } from "react";
 import { toast } from "react-toastify";
 import { Color } from "../configs/Color";
 import { db, storage } from "../../../../firebaseconfig";
-import { ref, uploadBytesResumablem, getDownloadURL } from "firebase/storage";
+import { ref, getDownloadURL, uploadBytesResumable } from "firebase/storage";
 import { collection, addDoc } from "firebase/firestore";
+import { motion } from "framer-motion";
 const Addproduct = () => {
   const [entertitle, setentertitle] = useState("");
   const [entershortdesc, setentershortdesc] = useState("");
@@ -15,17 +16,43 @@ const Addproduct = () => {
 
   const addproducthandaller = async (e) => {
     e.preventDefault();
-    const product = {
-      title: entertitle,
-      shortDesc: entershortdesc,
-      description: description,
-      price: enterprice,
-      imgUrl: enterimage,
-    };
 
-    //  add firebae product
-    toast.success("product added successfully");
-    console.log(product);
+    try {
+      const docref = await collection(db, "product");
+
+      const storageref = ref(
+        storage,
+        `productimages/${Date.now() + enterimage.name}`
+      );
+      const uploadtask = uploadBytesResumable(storageref, enterimage);
+
+      uploadtask.on(
+        "state_changed",
+        (snapshot) => {
+          const progress =
+            (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+          console.log(`Upload is ${progress}% done`);
+        },
+        (error) => {
+          console.error(error);
+          toast.error("can not upload images");
+        },
+        () => {
+          getDownloadURL(uploadtask.snapshot.ref).then(async (downloadURL) => {
+            await addDoc(docref, {
+              title: entertitle,
+              shortDesc: entershortdesc,
+              description: description,
+              price: enterprice,
+              imgUrl: downloadURL,
+            });
+            toast.success("product added successfully");
+          });
+        }
+      );
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   return (
@@ -103,7 +130,13 @@ const Addproduct = () => {
               required
             />
           </div>
-          <button type="submit">add product</button>
+          <motion.button
+            whileTap={{ scale: 1.1 }}
+            type="submit"
+            className={`bg-[${Color.primarycolor}] px-3  py-2 rounded text-white text-sm capitalize font-medium my-3`}
+          >
+            add product
+          </motion.button>
         </form>
       </div>
     </div>
