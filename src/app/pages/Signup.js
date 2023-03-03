@@ -9,6 +9,7 @@ import { doc, setDoc } from "firebase/firestore";
 import { db } from "../../../firebaseconfig";
 import { toast } from "react-toastify";
 import { motion } from "framer-motion";
+import { Dna } from "react-loader-spinner";
 
 function Signup() {
   const [password, setpassword] = useState("");
@@ -121,7 +122,16 @@ function Signup() {
           </form>
         </div>
       ) : (
-        <h2 className="text-center font-bold capitalize">loading.......</h2>
+        <h2 className="text-center font-bold capitalize my-10">
+          <Dna
+            visible={true}
+            height="80"
+            width="80"
+            ariaLabel="dna-loading"
+            wrapperStyle={{}}
+            wrapperClass="dna-wrapper"
+          />
+        </h2>
       )}
     </div>
   );

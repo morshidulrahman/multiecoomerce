@@ -114,7 +114,11 @@ function Header() {
               <motion.img
                 onClick={() => setToggle(!Toggle)}
                 whileTap={{ scale: 1.2 }}
-                src={currentuser ? currentuser.photoURL : userlogo}
+                src={
+                  currentuser && currentuser.photoURL
+                    ? currentuser.photoURL
+                    : userlogo
+                }
                 alt="user-logo"
                 className="w-6 h-6 rounded-full object-cover"
                 loading="lazy"
