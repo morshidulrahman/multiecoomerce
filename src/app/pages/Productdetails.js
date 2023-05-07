@@ -1,6 +1,6 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useParams } from "react-router-dom";
-import products from "../assets/data/products";
+
 import CommonTitle from "../Components/Shop/CommonTitle";
 import { AiFillStar } from "react-icons/ai";
 import { motion } from "framer-motion";
@@ -10,8 +10,12 @@ import { useDispatch } from "react-redux";
 import { addItem } from "../Redux/slices/cartSlice";
 import { toast } from "react-toastify";
 
+import { doc, getDoc } from "firebase/firestore";
+import UseGetdata from "../Components/Hook/UseGetdata";
+import { db } from "../../../firebaseconfig";
 function Productdetails() {
   const [tab, settab] = useState("desc");
+  const [product, setProducts] = useState({});
   const [textarea, settextarea] = useState("");
   const [name, setname] = useState("");
   const { id } = useParams();
@@ -19,15 +23,28 @@ function Productdetails() {
   const reviewuser = useRef("");
   const reviewMsg = useRef("");
   const dispatch = useDispatch();
+  const { data: products } = UseGetdata("product");
+  // const product = products.find((p) => p.id == id);
+  const docref = doc(db, "product", id);
+  useEffect(() => {
+    const getproduct = async () => {
+      const docsanp = await getDoc(docref);
+      if (docsanp.exists()) {
+        setProducts(docsanp.data());
+      } else {
+        console.log("product not found");
+      }
+    };
+    getproduct();
+  }, []);
 
-  const product = products.find((p) => p.id == id);
   const {
     imgUrl,
     productName,
     price,
     shortDesc,
-    avgRating,
-    reviews,
+    // avgRating,
+    // reviews,
     description,
     category,
   } = product;
@@ -90,7 +107,7 @@ function Productdetails() {
                   <AiFillStar color="orange" size={20} />
                 </span>
               </div>
-              <span>{avgRating} ratings</span>
+              {/* <span>{avgRating} ratings</span> */}
             </div>
             <p className="py-2">$ {price}</p>
             <p className="text-xs text-gray-500">{shortDesc}</p>
@@ -124,7 +141,7 @@ function Productdetails() {
             }`}
             onClick={() => settab("rev")}
           >
-            Reviews ({reviews.length})
+            {/* Reviews ({reviews.length}) */}
           </p>
         </div>
         <div className="my-4">
@@ -133,7 +150,7 @@ function Productdetails() {
           ) : (
             <div>
               <ul>
-                {reviews.map((item, index) => (
+                {/* {reviews.map((item, index) => (
                   <li className="mb-2" key={index}>
                     <h2 className="text-semibold mt-1 capitalize text-sm">
                       john doe
@@ -143,7 +160,7 @@ function Productdetails() {
                     </span>
                     <p className="text-xs text-gray-500">{item.text}</p>
                   </li>
-                ))}
+                ))} */}
               </ul>
               <div className="w-[80%] mx-auto">
                 <h3 className="font-semibold mb-2 mt-4">

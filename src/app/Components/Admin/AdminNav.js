@@ -4,8 +4,12 @@ import { BiSearch } from "react-icons/bi";
 import { AiOutlineSetting } from "react-icons/ai";
 import { IoMdNotificationsOutline } from "react-icons/io";
 import Auth from "../Hook/Auth";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 const adminnav = [
+  {
+    path: "dashboard",
+    name: "Dashboard",
+  },
   {
     path: "dashboard/all-products",
     name: "All products",
@@ -14,23 +18,22 @@ const adminnav = [
     path: "dashboard/add-product",
     name: "Add product",
   },
-  {
-    path: "dashboard/orders",
-    name: "orders",
-  },
+
   {
     path: "dashboard/user",
     name: "user",
   },
 ];
 const AdminNav = () => {
-  const [active, setactive] = useState(false);
   const { currentuser } = Auth();
   return (
     <header>
       <div className={`bg-[${Color.primarycolor}]`}>
         <div className="mx-auto container px-6 flex justify-between items-center py-5 ">
-          <h3 className="text-white font-semibold">Multimart</h3>
+          <Link to="/">
+            {" "}
+            <h3 className="text-white font-semibold">Multimart</h3>
+          </Link>
           <div className="relative w-[60%]">
             <input
               type="text"

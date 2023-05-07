@@ -50,6 +50,19 @@ function ShopComponent() {
     );
     setProductsData(searchproducts);
   };
+
+  const sortinghandler = (value) => {
+    if (value === "ascending") {
+      const filterdata = products.slice().sort((a, b) => a.price - b.price);
+      setProductsData(filterdata);
+    } else if (value === "descending") {
+      const filterdata = products.slice().sort((a, b) => b.price - a.price);
+      setProductsData(filterdata);
+    } else {
+      setProductsData(products);
+    }
+  };
+
   return (
     <>
       <div className="container px-6 mx-auto py-5">
@@ -80,6 +93,7 @@ function ShopComponent() {
           <div className="col-span-2 md:col-span-1">
             <select
               className={`bg-[${Color.primarycolor}] text-white p-2 rounded-md text-sm cursor-pointer border border-[${Color.primarycolor}] outline-none`}
+              onChange={(e) => sortinghandler(e.target.value)}
             >
               <option>Sort By</option>
               <option value="ascending" className="capitalize text-sm py-2">

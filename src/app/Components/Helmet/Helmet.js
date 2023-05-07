@@ -1,12 +1,10 @@
-import React from 'react'
+import React, { useEffect } from "react";
 
 function Helmet(props) {
-    document.title="Maltimart -" + props.title;
-  return (
-    <div className='w-96'>{
-        props.children
-        }</div>
-  )
+  useEffect(() => {
+    document.title = "Maltimart -" + props.title;
+  }, [props]);
+  return <div className="w-96">{props.children}</div>;
 }
 
-export default Helmet
+export default Helmet;

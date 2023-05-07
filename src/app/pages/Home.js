@@ -3,11 +3,14 @@ import { Color } from "../Components/configs/Color";
 import Hero from "../Components/Hero";
 import ProductList from "../Components/products/ProductList";
 import Services from "../Components/Services";
-import products from "../assets/data/products";
+
 import timerimage from "../assets/images/counter-timer-img.png";
 import { Link } from "react-router-dom";
 import Clock from "../Components/configs/Clock";
+import UseGetdata from "../Components/Hook/UseGetdata";
+import Loader from "../Components/Loader/Loader";
 function Home() {
+  const { data: products, loading } = UseGetdata("product");
   const [data, setdata] = useState([]);
   const [bestseller, setbestseller] = useState([]);
   const [mobileproduct, setmobileproduct] = useState([]);
@@ -30,7 +33,7 @@ function Home() {
     setmobileproduct(mobilefilterproducts);
     setwirelessproduct(wirelessfilterproducts);
     setwatchproduct(watchproduct);
-  }, []);
+  }, [products]);
 
   return (
     <>
@@ -42,7 +45,7 @@ function Home() {
         >
           Trending products
         </h2>
-        <ProductList data={data} />
+        {loading ? <Loader /> : <ProductList data={data} />}
       </section>
       <section className="container mx-auto px-6 py-10">
         <h2
@@ -50,7 +53,7 @@ function Home() {
         >
           Best Sales
         </h2>
-        <ProductList data={bestseller} />
+        {loading ? <Loader /> : <ProductList data={bestseller} />}
       </section>
       <section className={`bg-[${Color.primarycolor}]`}>
         <div className="container mx-auto px-6 py-10 ">
@@ -85,8 +88,8 @@ function Home() {
         >
           New Arrivals
         </h2>
-        <ProductList data={mobileproduct} />
-        <ProductList data={wirelessproduct} />
+        {loading ? <Loader /> : <ProductList data={mobileproduct} />}
+        {loading ? <Loader /> : <ProductList data={wirelessproduct} />}
       </section>
       <section className="container mx-auto px-6 py-10">
         <h2
@@ -94,7 +97,7 @@ function Home() {
         >
           popular in category
         </h2>
-        <ProductList data={watchproduct} />
+        {loading ? <Loader /> : <ProductList data={watchproduct} />}
       </section>
     </>
   );
