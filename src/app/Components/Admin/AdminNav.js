@@ -53,7 +53,7 @@ const AdminNav = () => {
           </div>
           <div>
             <img
-              src={currentuser?.photoURL}
+              src={currentuser && currentuser?.photoURL}
               alt="user"
               className="w-7 h-7 rounded-full object-cover"
               loading="lazy"

@@ -7,6 +7,7 @@ import { collection, addDoc } from "firebase/firestore";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import { Bars } from "react-loader-spinner";
+import Loader from "../Loader/Loader";
 const Addproduct = () => {
   const [entertitle, setentertitle] = useState("");
   const [entershortdesc, setentershortdesc] = useState("");
@@ -19,6 +20,7 @@ const Addproduct = () => {
   const addproducthandaller = async (e) => {
     e.preventDefault();
     setloading(true);
+
     try {
       const docref = await collection(db, "product");
 
@@ -39,6 +41,7 @@ const Addproduct = () => {
           console.error(error);
           toast.error("can not upload images");
         },
+
         () => {
           getDownloadURL(uploadtask.snapshot.ref).then(async (downloadURL) => {
             await addDoc(docref, {
@@ -47,11 +50,12 @@ const Addproduct = () => {
               description: description,
               price: enterprice,
               imgUrl: downloadURL,
+              category: entercategory,
             });
-            setloading(false);
-            toast.success("product added successfully");
-            navigate("/dashboard/all-products");
           });
+          setloading(false);
+          toast.success("product added successfully");
+          navigate("/dashboard/all-products");
         }
       );
     } catch (error) {
@@ -64,17 +68,7 @@ const Addproduct = () => {
     <div>
       <div className="mx-auto px-6 container">
         {loading ? (
-          <div className="flex items-center justify-center my-10">
-            <Bars
-              visible={true}
-              height="80"
-              width="80"
-              color="#0a1d37"
-              ariaLabel="dna-loading"
-              wrapperStyle={{}}
-              wrapperClass="dna-wrapper"
-            />
-          </div>
+          <Loader />
         ) : (
           <>
             <h1 className="font-bold text-xl capitalize mt-5">Add product</h1>

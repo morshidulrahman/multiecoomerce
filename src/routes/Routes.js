@@ -14,6 +14,7 @@ import ProtectedRoute from "./ProtectedRoute";
 import Addproduct from "../app/Components/Admin/Addproduct";
 import AllProduct from "../app/Components/Admin/AllProduct";
 import Dashboard from "../app/Components/Admin/Dashboard";
+import User from "../app/Components/Admin/User";
 function Routers() {
   return (
     <Routes>
@@ -27,6 +28,7 @@ function Routers() {
         <Route path="checkout" element={<Checkout />} />
         <Route path="dashboard/all-products" element={<AllProduct />} />
         <Route path="dashboard/add-product" element={<Addproduct />} />
+        <Route path="dashboard/user" element={<User />} />
         <Route path="dashboard" element={<Dashboard />} />
       </Route>
 

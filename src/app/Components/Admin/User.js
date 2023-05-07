@@ -4,8 +4,8 @@ import { deleteDoc, doc } from "firebase/firestore";
 import UseGetdata from "../Hook/UseGetdata";
 import Loader from "../Loader/Loader";
 import { toast } from "react-toastify";
-const AllProduct = () => {
-  const { data: productData, loading } = UseGetdata("product");
+const User = () => {
+  const { data: userData, loading } = UseGetdata("users");
 
   const deletedproduct = async (id) => {
     await deleteDoc(doc(db, "product", id));
@@ -14,7 +14,7 @@ const AllProduct = () => {
 
   return (
     <div className="container px-6 mx-auto my-5">
-      <h1 className="font-bold capitalize my-5 ">All products</h1>
+      <h1 className="font-bold capitalize my-5 ">All Users</h1>
       {loading ? (
         <Loader />
       ) : (
@@ -22,47 +22,42 @@ const AllProduct = () => {
           <thead>
             <tr className="">
               <th className="px-6 py-3 bg-gray-50 text-left text-xs font-bold text-gray-500 uppercase tracking-wider">
-                iMAGE
+                Image
               </th>
               <th className="px-6 py-3 bg-gray-50 text-left text-xs font-bold text-gray-500 uppercase tracking-wider">
-                Title
+                UserName
               </th>
               <th className="px-6 py-3 bg-gray-50 text-left text-xs font-bold text-gray-500 uppercase tracking-wider">
-                category
+                Email
               </th>
               <th className="px-6 py-3 bg-gray-50 text-left text-xs font-bold text-gray-500 uppercase tracking-wider">
-                price
-              </th>
-              <th className="px-6 py-3 bg-gray-50 text-left text-xs font-bold text-gray-500 uppercase tracking-wider">
-                Delete
+                Action
               </th>
             </tr>
           </thead>
 
           <tbody className="bg-white divide-y divide-gray-200">
-            {productData?.map((item) => (
+            {userData?.map((item) => (
               <tr key={item.id}>
                 <td className="px-6 py-4 whitespace-nowrap">
                   <img
                     className="h-16 w-16 rounded-sm"
-                    src={item.imgUrl}
+                    src={item.photoURL}
                     alt="chair"
                   />
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap">
                   <div className="text-sm font-medium text-gray-900">
-                    {item.title}
+                    {item.displayName}
                   </div>
                 </td>
 
                 <td className="px-6 py-4 whitespace-nowrap">
                   <span className="px-2 inline-flex text-sm leading-5 font-medium">
-                    {item?.category}
+                    {item?.email}
                   </span>
                 </td>
-                <td className="px-6 py-4 whitespace-nowrap">
-                  <div className="font-medium text-sm ml-2">{item.price}</div>
-                </td>
+
                 <td className="px-6 py-4 whitespace-nowrap">
                   <div>
                     <button
@@ -82,4 +77,4 @@ const AllProduct = () => {
   );
 };
 
-export default AllProduct;
+export default User;

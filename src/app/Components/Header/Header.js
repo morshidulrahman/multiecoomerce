@@ -126,9 +126,18 @@ function Header() {
               {Toggle ? (
                 <div className="bg-[#fdefe6] px-4 py-2 rounded-sm absolute top-11 text-sm font-semibold">
                   {currentuser ? (
-                    <motion.span onClick={logout} whileTap={{ scale: 1.2 }}>
-                      Logout
-                    </motion.span>
+                    <div className="flex flex-col gap-1">
+                      {currentuser.email == "boydanger416@gmail.com" && (
+                        <Link to="/dashboard">
+                          <span onClick={() => setToggle(false)}>
+                            Dashboard
+                          </span>
+                        </Link>
+                      )}
+                      <motion.span onClick={logout} whileTap={{ scale: 1.2 }}>
+                        Logout
+                      </motion.span>
+                    </div>
                   ) : (
                     <div className="flex flex-col gap-1 text-sm">
                       <Link to="/signup">

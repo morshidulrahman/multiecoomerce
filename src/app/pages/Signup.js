@@ -9,7 +9,8 @@ import { doc, setDoc } from "firebase/firestore";
 import { db } from "../../../firebaseconfig";
 import { toast } from "react-toastify";
 import { motion } from "framer-motion";
-import { Dna } from "react-loader-spinner";
+import { Bars } from "react-loader-spinner";
+import Loader from "../Components/Loader/Loader";
 
 function Signup() {
   const [password, setpassword] = useState("");
@@ -51,7 +52,6 @@ function Signup() {
             });
 
             // store the data
-
             await setDoc(doc(db, "users", user.uid), {
               uid: user.uid,
               displayName: name,
@@ -122,16 +122,7 @@ function Signup() {
           </form>
         </div>
       ) : (
-        <h2 className="text-center font-bold capitalize my-10">
-          <Dna
-            visible={true}
-            height="80"
-            width="80"
-            ariaLabel="dna-loading"
-            wrapperStyle={{}}
-            wrapperClass="dna-wrapper"
-          />
-        </h2>
+        <Loader />
       )}
     </div>
   );
