@@ -20,28 +20,28 @@ function ProductCard({ item }) {
     toast.success("cart added successfully");
   };
   return (
-    <Link to={`/shop/${item.id}`}>
-      <div className="border rounded-md px-2 py-3 cursor-pointer hover:-translate-y-2 shadow-md duration-500">
+    <div className="border rounded-md px-2 py-3 cursor-pointer hover:-translate-y-2 shadow-md duration-500">
+      <Link to={`/shop/${item.id}`}>
         <img src={item.imgUrl} alt="chair" className="w-48 h-48" />
-        <motion.h3
-          whileTap={{ scale: 1.1 }}
-          className={`text-[${Color.primarycolor}] font-semibold text-sm mt-2`}
+      </Link>
+      <motion.h3
+        whileTap={{ scale: 1.1 }}
+        className={`text-[${Color.primarycolor}] font-semibold text-sm mt-2`}
+      >
+        {item.productName}
+      </motion.h3>
+      <p className="text-sm mb-2 capitalize text-gray-600">{item.category}</p>
+      <div className="flex justify-between items-center">
+        <p className="text-xs">$ {item.price}</p>
+        <motion.span
+          onClick={addtoCart}
+          className={`bg-[${Color.primarycolor}] p-2 flex items-center text-white rounded-full mr-2 justify-end`}
+          whileTap={{ scale: 1.2 }}
         >
-          {item.productName}
-        </motion.h3>
-        <p className="text-sm mb-2 capitalize text-gray-600">{item.category}</p>
-        <div className="flex justify-between items-center">
-          <p className="text-xs">$ {item.price}</p>
-          <motion.span
-            onClick={addtoCart}
-            className={`bg-[${Color.primarycolor}] p-2 flex items-center text-white rounded-full mr-2 justify-end`}
-            whileTap={{ scale: 1.2 }}
-          >
-            <BsCartPlus size={14} />
-          </motion.span>
-        </div>
+          <BsCartPlus size={14} />
+        </motion.span>
       </div>
-    </Link>
+    </div>
   );
 }
 

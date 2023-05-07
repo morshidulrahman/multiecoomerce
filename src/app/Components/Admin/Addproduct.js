@@ -126,6 +126,7 @@ const Addproduct = () => {
                     required
                     className="rounded text-sm px-2 outline-none w-full border py-1 border-gray-300"
                   >
+                    <option hidden>select a category</option>
                     <option value="sofa">sofa</option>
                     <option value="mobile">mobile</option>
                     <option value="chair">chair</option>

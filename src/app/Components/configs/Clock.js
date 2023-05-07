@@ -6,7 +6,7 @@ function Clock() {
   const [minutes, setminutes] = useState();
   const [seconds, setseconds] = useState();
 
-  let destination = new Date("Mar 20, 2023 ").getTime();
+  let destination = new Date("July 20, 2023 ").getTime();
   let interval = setInterval(() => {
     let now = new Date().getTime();
 

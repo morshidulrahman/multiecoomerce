@@ -1,10 +1,19 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Color } from "../configs/Color";
 import { BiSearch } from "react-icons/bi";
 import ProductList from "../products/ProductList";
 import products from "../../assets/data/products";
+import UseGetdata from "../Hook/UseGetdata";
+import Loader from "../Loader/Loader";
 function ShopComponent() {
-  const [productsData, setProductsData] = useState(products);
+  const { data: products, loading } = UseGetdata("product");
+  const [productsData, setProductsData] = useState([]);
+
+  useEffect(() => {
+    if (!loading) {
+      setProductsData(products);
+    }
+  }, [loading]);
 
   const handlefilter = (value) => {
     if (value === "sofa") {
@@ -120,14 +129,20 @@ function ShopComponent() {
             </div>
           </div>
         </div>
-        {productsData.length == 0 ? (
-          <div className=" py-3 md:py-20 ">
-            <h1 className="font-bold text-2xl text-center">
-              product not found
-            </h1>
-          </div>
+        {loading ? (
+          <Loader />
         ) : (
-          <ProductList data={productsData} />
+          <>
+            {productsData.length == 0 ? (
+              <div className=" py-3 md:py-20 ">
+                <h1 className="font-bold text-2xl text-center">
+                  product not found
+                </h1>
+              </div>
+            ) : (
+              <ProductList data={productsData} />
+            )}
+          </>
         )}
       </div>
     </>
