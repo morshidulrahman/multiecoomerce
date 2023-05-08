@@ -19,9 +19,9 @@ function Routers() {
   return (
     <Routes>
       <Route path="/" element={<Home />} />
-      <Route path="shop" element={<Shop />} />
-      <Route path="shop/:id" element={<Productdetails />} />
-      <Route path="cart" element={<Cart />} />
+      <Route path="/shop" element={<Shop />} />
+      <Route path="/shop/:id" element={<Productdetails />} />
+      <Route path="/cart" element={<Cart />} />
 
       <Route path="/*" element={<ProtectedRoute />}>
         <Route path="checkout" element={<Checkout />} />

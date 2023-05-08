@@ -65,7 +65,7 @@ const AdminNav = () => {
         </div>
       </div>
       <div className={`bg-[${Color.cardbg2}]`}>
-        <ul className="container flex  px-6 justify-between md:px-0 md:justify-center  py-4 md:space-x-5 flex-wrap md:gap-5 ">
+        <ul className="container flex  px-6 justify-between md:px-0 md:justify-center items-center py-4 md:space-x-5 flex-wrap md:gap-5 ">
           {adminnav.map((item, index) => (
             <li key={index} className=" font-medium text-sm mb-5 md:mb-0">
               <NavLink
