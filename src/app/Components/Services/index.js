@@ -6,7 +6,7 @@ import { Color } from "../configs/Color";
 function Services() {
   return (
     <section className="container mx-auto px-6 py-10">
-      <div className="flex items-center justify-center md:justify-start gap-4 md:gap-2 flex-wrap">
+      <div className="flex items-center justify-between md:justify-start gap-6 md:gap-2 flex-wrap">
         {serviceData.map((item, index) => (
           <motion.div
             whileHover={{ sclae: 1.2 }}

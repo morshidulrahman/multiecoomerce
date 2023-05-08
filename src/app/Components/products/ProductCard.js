@@ -20,13 +20,13 @@ function ProductCard({ item }) {
     toast.success("cart added successfully");
   };
   return (
-    <div className="border rounded-md px-2 py-3 cursor-pointer hover:-translate-y-2 shadow-md duration-500">
+    <div className="border rounded-md px-2 py-3 cursor-pointer hover:-translate-y-2 shadow-md duration-500 w-[65%] md:w-[22%]">
       <Link to={`/shop/${item.id}`}>
-        <img src={item.imgUrl} alt="chair" className="w-48 h-48" />
+        <img src={item.imgUrl} alt="chair" className="w-full h-48" />
       </Link>
       <motion.h3
         whileTap={{ scale: 1.1 }}
-        className={`text-[${Color.primarycolor}] font-semibold text-sm mt-2`}
+        className={`text-[${Color.primarycolor}] font-semibold text-sm mt-2 truncate`}
       >
         {item.productName}
       </motion.h3>
