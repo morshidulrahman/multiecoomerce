@@ -18,7 +18,7 @@ function Login() {
       await signInWithEmailAndPassword(auth, email, password);
       setloading(false);
       toast.success("login successfully");
-      navigate("/checkout");
+      navigate("/");
     } catch (error) {
       setloading(false);
       toast.error("username and password are incorrect");
