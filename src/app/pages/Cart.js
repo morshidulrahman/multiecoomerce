@@ -25,11 +25,11 @@ function Cart() {
           ) : (
             <>
               <div className="grid grid-cols-4 gap-6">
-                <table className="col-span-3">
+                <table className="col-span-4 md:col-span-3">
                   <thead className="">
                     <tr className="border-b-2 px-4 text-sm text-left pb-2">
                       <th>Image</th>
-                      <th className="w-[40%]">Title</th>
+                      <th className="w-[15%] md:w-[40%]">Title</th>
                       <th>Price</th>
                       <th>Qty</th>
                       <th>Delete</th>
@@ -41,7 +41,7 @@ function Cart() {
                     ))}
                   </tbody>
                 </table>
-                <div className="col-span-1">
+                <div className="col-span-4 md:col-span-1">
                   <div className="flex justify-between items-center font-bold">
                     <p>Subtotal</p>
                     <span>${Totalammount}</span>
@@ -91,7 +91,7 @@ const Tr = ({ item }) => {
           loading="lazy"
         />
       </td>
-      <td>{item.productName}</td>
+      <td className="truncate">{item.productName}</td>
       <td>${item.price}</td>
       <td className="pl-2">{item.quantity}</td>
       <motion.td whileTap={{ scale: 1.2 }} className="pl-3" onClick={dleteditd}>

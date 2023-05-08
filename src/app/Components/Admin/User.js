@@ -13,7 +13,7 @@ const User = () => {
   };
 
   return (
-    <div className="container px-6 mx-auto my-5">
+    <div className="container px-6 mx-auto my-5 overflow-auto">
       <h1 className="font-bold capitalize my-5 ">All Users</h1>
       {loading ? (
         <Loader />

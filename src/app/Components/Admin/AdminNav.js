@@ -34,7 +34,7 @@ const AdminNav = () => {
             {" "}
             <h3 className="text-white font-semibold">Multimart</h3>
           </Link>
-          <div className="relative w-[60%]">
+          <div className="relative w-[60%] hidden md:flex">
             <input
               type="text"
               placeholder="Search...."
@@ -65,9 +65,9 @@ const AdminNav = () => {
         </div>
       </div>
       <div className={`bg-[${Color.cardbg2}]`}>
-        <ul className="container flex items-center md:justify-center space-x-3 py-4 md:space-x-5 flex-wrap gap-5">
+        <ul className="container flex  px-6 justify-between md:px-0 md:justify-center  py-4 md:space-x-5 flex-wrap md:gap-5 ">
           {adminnav.map((item, index) => (
-            <li key={index} className=" font-medium text-sm ">
+            <li key={index} className=" font-medium text-sm mb-5 md:mb-0">
               <NavLink
                 to={item.path}
                 className={(navclass) =>

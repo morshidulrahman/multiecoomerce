@@ -13,12 +13,12 @@ const AllProduct = () => {
   };
 
   return (
-    <div className="container px-6 mx-auto my-5">
+    <div className="container px-6 mx-auto my-5 overflow-auto">
       <h1 className="font-bold capitalize my-5 ">All products</h1>
       {loading ? (
         <Loader />
       ) : (
-        <table className="min-w-full divide-y divide-gray-200">
+        <table className="min-w-full divide-y divide-gray-200 ">
           <thead>
             <tr className="">
               <th className="px-6 py-3 bg-gray-50 text-left text-xs font-bold text-gray-500 uppercase tracking-wider">

@@ -116,7 +116,7 @@ function Header() {
                 loading="lazy"
               />
               {Toggle ? (
-                <div className="bg-[#fdefe6] px-4 py-2 rounded-sm absolute top-11 text-sm font-semibold">
+                <div className="bg-[#fdefe6] px-4 py-2 rounded-sm absolute top-11 text-sm font-semibold -left-5 md:left-0">
                   {currentuser ? (
                     <div className="flex flex-col gap-1">
                       <Link to="/dashboard">
