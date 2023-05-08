@@ -17,7 +17,7 @@ import { toast } from "react-toastify";
 const Navlink = [
   {
     title: "Home",
-    path: "home",
+    path: "/",
   },
   {
     title: "shop",
@@ -46,7 +46,7 @@ function Header() {
       .then(() => {
         setToggle(false);
         toast.success("logout successfully");
-        navigation("/home");
+        navigation("/");
       })
       .catch((err) => {
         toast.error(err.message);
@@ -60,7 +60,7 @@ function Header() {
           <div className="flex space-x-2">
             <img src={logo} alt="logo" className="w-5 h-5" />
             <p className={`text-[${Color.primarycolor}] font-semibold`}>
-              <Link to="home">Multimart</Link>
+              <Link to="/">Multimart</Link>
             </p>
           </div>
           <div>
