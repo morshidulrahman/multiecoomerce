@@ -67,7 +67,7 @@ function Header() {
             <ul
               className={` ${
                 toggle
-                  ? "flex absolute top-0 right-0 w-48 bg-slate-100 h-full flex-col justify-center items-center z-50 gap-2"
+                  ? "flex  fixed top-0 right-0 w-48 bg-slate-100 h-full flex-col justify-center items-center z-50 gap-2"
                   : "md:flex items-center hidden space-x-5"
               }`}
             >
@@ -94,14 +94,6 @@ function Header() {
             </ul>
           </div>
           <div className="flex items-center space-x-4">
-            <div className="relative">
-              <AiOutlineHeart size={22} />
-              <p
-                className={`bg-[#0a1d37] text-white  rounded-full text-[8px] w-3 h-3 flex items-center justify-center absolute top-0 -right-0`}
-              >
-                1
-              </p>
-            </div>
             <div className="relative" onClick={navigatelink}>
               <BsBagDash size={20} />
               <p
@@ -127,13 +119,10 @@ function Header() {
                 <div className="bg-[#fdefe6] px-4 py-2 rounded-sm absolute top-11 text-sm font-semibold">
                   {currentuser ? (
                     <div className="flex flex-col gap-1">
-                      {currentuser.email == "boydanger416@gmail.com" && (
-                        <Link to="/dashboard">
-                          <span onClick={() => setToggle(false)}>
-                            Dashboard
-                          </span>
-                        </Link>
-                      )}
+                      <Link to="/dashboard">
+                        <span onClick={() => setToggle(false)}>Dashboard</span>
+                      </Link>
+
                       <motion.span onClick={logout} whileTap={{ scale: 1.2 }}>
                         Logout
                       </motion.span>

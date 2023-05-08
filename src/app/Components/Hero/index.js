@@ -24,7 +24,7 @@ function Hero() {
               className={`bg-[${Color.primarycolor}] text-white px-3 py-1 rounded-sm capitalize text-sm`}
               whileTap={{ scale: 1.2 }}
             >
-              <Link to="shop">shop now</Link>
+              <Link to="/shop">shop now</Link>
             </motion.button>
           </div>
           <div className="md:w-2/5 w-10/12 sm:w-1/2">

@@ -32,7 +32,7 @@ function Login() {
         </h1>
         <form
           onSubmit={singin}
-          className={`bg-[${Color.primarycolor}] px-6 pt-8 pb-5 rounded-md w-[40%] flex items-center justify-center flex-col`}
+          className={`bg-[${Color.primarycolor}] px-6 pt-8 pb-5 rounded-md  w-full md:w-[40%] flex items-center justify-center flex-col`}
         >
           <input
             type="email"
